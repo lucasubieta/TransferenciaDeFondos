@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: ghostwhite;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+			font-size: 1.4rem;
+            text-align: left;
+            color: black;
+        }
+		
+		h1{
+			color:grey;
+		}
+		.title {
+		    font-size: 0.7rem;
+		    margin-bottom: 3;
+			color: black;
+		}
+        hr {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+		
+		.contenedorTitulos{
+		align-items: center;
+		}
+		
+        label {
+            font-size: 1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: dimgrey;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+        button:hover {
+            background-color: grey;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+		
+		.error{
+			display: block;
+			color:red;
+			font-size: 0.9rem;
+		}
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <p>Actividad 2 - Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
+        <p>Lucas Danilo Ubieta</p>
+    </div>
+    <hr>
+	<div class="contenedorTitulos">
+
+	</div>
+    <form action="/operacion" method="post">
+		<h1>Cuenta activa: <span th:text="${cuenta.idCuenta}"></span></h1>
+		<h2>Saldo: <span th:text="${cuenta.saldo}"></span></h2>
+        <input type="hidden" name="idCuenta" th:value="${cuenta.idCuenta}">
+        <label>Cantidad:</label>
+        <input type="number" name="cantidad" required>
+
+        <label>Operación:</label>
+        <select name="tipoOperacion">
+            <option value="Ingreso">Ingresar</option>
+            <option value="Extraccion">Extraer</option>
+        </select>
+        <button type="submit">Realizar</button>
+		<p class="error" th:if="${error}" th:text="${error}"></p>
+
+    </form>
+
+
+    <a th:href="@{/movimientos/{idCuenta}(idCuenta=${cuenta.idCuenta})}">Ver movimientos</a>
+    <a th:href="@{/logout}">Cerrar sesión</a>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Movimientos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: ghostwhite;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: black;
+        }
+		.title {
+		    font-size: 0.7rem;
+		    margin-bottom: 3;
+			color: black;
+		}
+        hr {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color:lightgrey;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 6px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+ 
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.0rem;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <p>Actividad 2 - Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
+        <p>Lucas Danilo Ubieta</p>
+    </div>
+    <hr>
+    <h1>Cuenta activa: <span th:text="${cuenta.idCuenta}"></span></h1>
+    <h2>Saldo: <span th:text="${cuenta.saldo}"></span></h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Operación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mov : ${movimientos}">
+                <td th:text="${mov.fecha}"></td>
+                <td th:text="${mov.cantidad}"></td>
+                <td th:text="${mov.operacion}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/volver}">Volver al menú</a>
+</body>
+</html>
