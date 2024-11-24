@@ -8,6 +8,7 @@
             background-color:ghostwhite;
             margin: 0;
             padding: 20px;
+			text-align: center;
         }
         h1 {
             text-align: center;
@@ -58,21 +59,33 @@
             background-color: grey;
         }
 
+		
     </style>
 </head>
 <body>
     <div class="title">
-		<p>Actividad 3 - Transferencia | Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
+        <p>Actividad 3 - Transferencia | Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
 		<p>Lucas Danilo Ubieta</p>
 
     </div>
     <hr>
-    <h1>Cajero Virtual</h1>
-    <form action="/cuenta" method="post">
-        <label>Introduza el número de cuenta:</label>
-        <input type="number" name="idCuenta" required>
-        <button type="submit">Entrar</button>
-    </form>
-    <p th:if="${error}" th:text="${error}"></p>
+	<h1>Realizar transferencia</h1>
+	<h3>Cuenta activa: <span th:text="${cuenta.idCuenta}"></span></h3>
+	<h3>Saldo: <span th:text="${cuenta.saldo}"></span></h3>
+	
+	<form action="/transferir" method="post">
+	        <label>Seleccione la cuenta donde transferirá el importe de:  <span th:text="${transferencia.cantidad}"></span></label>
+			
+			<!-- Variable oculta para declarar un name y pasarlo al post-->
+			<input type="hidden" name="cantidad" th:value="${cuenta.idCuenta}">
+			<input type="number" name="cuentaDestino" required>
+
+
+	        <button type="submit">Realizar</button>
+
+	    </form>
+		<a th:href="@{/volver}">Volver al menú</a>
+
 </body>
+
 </html>

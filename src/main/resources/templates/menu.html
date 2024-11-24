@@ -85,13 +85,21 @@
 			display: block;
 			color:red;
 			font-size: 0.9rem;
+			font-weight: bold;
 		}
+			.mensaje{
+				font-weight: bold;
+				color:green;
+				font-size: 0.9rem;
+
+			}
+		
 
     </style>
 </head>
 <body>
     <div class="title">
-        <p>Actividad 2 - Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
+        <p>Actividad 3 - Transferencia | Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
         <p>Lucas Danilo Ubieta</p>
     </div>
     <hr>
@@ -109,9 +117,14 @@
         <select name="tipoOperacion">
             <option value="Ingreso">Ingresar</option>
             <option value="Extraccion">Extraer</option>
+			<option value="Transferir">Transferir</option>
         </select>
         <button type="submit">Realizar</button>
+		
 		<p class="error" th:if="${error}" th:text="${error}"></p>
+
+		<!-- Utilizo mensaje porque "error" tiene color rojo -->
+		<p class="mensaje" th:if="${mensaje}" th:text="${mensaje}"></p>
 
     </form>
 

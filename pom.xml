@@ -8,8 +8,11 @@
 		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
+	<!-- DEPENDENCIAS Y CONFIGURACION DEL PROYECTO-->
+
 	<groupId>cajeroweb</groupId>
-	<artifactId>LDU_Actividad2</artifactId>
+	<artifactId>LDU_Actividad3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LDU_Actividad2</name>
 	<description>Actividad 2 cajero virtual data jpa</description>
