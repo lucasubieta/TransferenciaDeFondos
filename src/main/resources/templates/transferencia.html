@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cajero Virtual</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:ghostwhite;
+            margin: 0;
+            padding: 20px;
+			text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: black;
+        }
+        .title {
+            font-size: 0.7rem;
+            margin-bottom: 3;
+			color: black;
+        }
+        hr {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        label {
+            font-size: 1rem;
+            color:#333;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color:dimgrey;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+        button:hover {
+            background-color: grey;
+        }
+
+		
+    </style>
+</head>
+<body>
+    <div class="title">
+        <p>Actividad 3 - Transferencia | Cajero Virtual con Spring Boot Thymeleaf y Data Jpa</p>
+		<p>Lucas Danilo Ubieta</p>
+
+    </div>
+    <hr>
+	<h1>Realizar transferencia</h1>
+	<h3>Cuenta activa: <span th:text="${cuenta.idCuenta}"></span></h3>
+	<h3>Saldo: <span th:text="${cuenta.saldo}"></span></h3>
+	
+	<form action="/transferir" method="post">
+	        <label>Seleccione la cuenta donde transferirá el importe de:  <span th:text="${transferencia.cantidad}"></span></label>
+			
+			<!-- Variable oculta para declarar un name y pasarlo al post-->
+			<input type="hidden" name="cantidad" th:value="${cuenta.idCuenta}">
+			<input type="number" name="cuentaDestino" required>
+
+
+	        <button type="submit">Realizar</button>
+
+	    </form>
+		<a th:href="@{/volver}">Volver al menú</a>
+
+</body>
+
+</html>
